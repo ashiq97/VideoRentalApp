@@ -1,4 +1,4 @@
-﻿@model Vanilla_Vivo.Models.Movie
+﻿@model Vanilla_Vivo.ViewModels.RandomMovieViewModel
 
 
 @{
@@ -6,5 +6,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@Model.Name</h2>
+@{
+    var colorName = Model.Customers.Count > 1 ? "red" : "green";
+}
+
+<h2 style="color:@colorName">@Model.Movie.Name</h2>
+
+@if(Model.Customers.Count == 0)
+{
+    <text>No One has rented movie before.</text>
+}
+else
+{
+<ul>
+@foreach (var customer in Model.Customers)
+{
+    <li>
+       @customer.Name
+    </li>
+}
+</ul>
+    
+}
 
