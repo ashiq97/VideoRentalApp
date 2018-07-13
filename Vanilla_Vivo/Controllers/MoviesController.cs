@@ -13,8 +13,25 @@ namespace Vanilla_Vivo.Controllers
 		//
 		// GET: /Movies/
 
-        public ActionResult Random()
+        public ActionResult Index()
         {
+            var movie = GetMovies();
+
+            return View(movie);
+        }
+
+        private IEnumerable<Movie> GetMovies()
+        {
+            return new List<Movie>
+            {
+                new Movie{ Id = 1 , Name = "Sherk"},
+                new Movie{ Id = 2 , Name = "Walle"}
+            };
+        }
+        
+        /* public ActionResult Random()
+        {
+           
             var movie = new Movie() 
             {
                 Name = "Sherk!"
@@ -31,10 +48,14 @@ namespace Vanilla_Vivo.Controllers
                 Movie = movie,
                 Customers = customers
             };
+            
             //ViewBag.movieName = movie;
-            return View(viewModel);
-        }
 
+
+            return View(viewModel);
+            
+        }
+        */
 
 
 		/*public ActionResult Random()
